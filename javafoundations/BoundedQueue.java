@@ -44,12 +44,25 @@ public class BoundedQueue<T> extends CircularArrayQueue<T>{
      * @param args an array string (unused in this case)
      */
     public static void main (String[] args){
-        BoundedQueue bq = new BoundedQueue(10);
-        // testing is full on empty bounded queue, expect false
-        bq.isFull();
-        bq.enqueue("hi");
-        // expect true
-        bq.isFull();
-        //test enqueue on bq at CAPACITY, expect no enqueuing
+        BoundedQueue bq = new BoundedQueue(2);
+        System.out.println("-------Testing on bounded queue (bq) of capacity=2-----");
+        System.out.println("test toString() on EMPTY bq:\n" + bq);
+        System.out.println("test inherited isEmpty() on EMPTY bq, expect true: " + bq.isEmpty());
+        System.out.println("test inherited size() on EMPTY bq, expect 0: " + bq.size());
+        System.out.println("testing isFull on EMPTY bq, expect false: " + bq.isFull() + "\n");
+        bq.enqueue("first elt");
+        System.out.println("enqueued first element to non-full bq, expect enqueued first elt:\n" + bq + "\n");
+        bq.enqueue("second elt");
+        System.out.println("enqueued second element to non-full bq, expect enqueued second elt:\n" + bq + "\n");
+        System.out.println("testing isFull on FULL bq, expect true: " + bq.isFull() + "\n");
+        bq.enqueue("third elt");
+        System.out.println("enqueued third element to AT-CAPACITY bq, expect does NOT enqueue:\n" + bq + "\n");
+        
+        BoundedQueue bq2 = new BoundedQueue(10);
+        System.out.println("-------Testing on bounded queue (bq2) of capacity=10-----");
+        bq2.enqueue("1st");
+        System.out.println("test inherited first() on bq2, expect 1st: " + bq2.first());
+        bq2.dequeue();
+        System.out.println("test inherited dequeue() on bq2, expect bq2 to become empty: " + bq2);
     }
 }

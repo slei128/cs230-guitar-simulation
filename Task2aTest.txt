@@ -1,0 +1,31 @@
+-------Testing on bounded queue (bq) of capacity=2-----
+test toString() on EMPTY bq:
+<front of queue>
+
+test inherited isEmpty() on EMPTY bq, expect true: true
+test inherited size() on EMPTY bq, expect 0: 0
+testing isFull on EMPTY bq, expect false: false
+
+enqueued first element to non-full bq, expect enqueued first elt:
+<front of queue>
+first elt
+
+
+enqueued second element to non-full bq, expect enqueued second elt:
+<front of queue>
+first elt
+second elt
+
+
+testing isFull on FULL bq, expect true: true
+
+enqueued third element to AT-CAPACITY bq, expect does NOT enqueue:
+<front of queue>
+first elt
+second elt
+
+
+-------Testing on bounded queue (bq2) of capacity=10-----
+test inherited first() on bq2, expect 1st: 1st
+test inherited dequeue() on bq2, expect bq2 to become empty: <front of queue>
+
