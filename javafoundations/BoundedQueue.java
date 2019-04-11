@@ -8,9 +8,9 @@ package javafoundations;
  * @version April 8th, 2019
  */
 public class BoundedQueue<T> extends CircularArrayQueue<T>{
-    
+
     private final int CAPACITY;
-    
+
     /**
      * Constructor for BoundedQueue
      * @param capacity the capacity of the bounded queue
@@ -57,7 +57,7 @@ public class BoundedQueue<T> extends CircularArrayQueue<T>{
         System.out.println("testing isFull on FULL bq, expect true: " + bq.isFull() + "\n");
         bq.enqueue("third elt");
         System.out.println("enqueued third element to AT-CAPACITY bq, expect does NOT enqueue:\n" + bq + "\n");
-        
+
         BoundedQueue bq2 = new BoundedQueue(10);
         System.out.println("-------Testing on bounded queue (bq2) of capacity=10-----");
         bq2.enqueue("1st");

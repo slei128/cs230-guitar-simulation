@@ -20,9 +20,8 @@ public class GuitarString{
      */
     public GuitarString(double frequency){
         this.frequency = frequency;
-        //initializes a bounded queue of the desired capacity N, where N by 
-        //definition is sampling rate 44,100 divided by the frequency, 
-        //rounded up to the nearest integer
+        //initializes a bounded queue of the desired capacity N, where N by definition is 
+        //sampling rate 44,100 divided by the frequency, rounded up to the nearest integer
         bq = new BoundedQueue<Double>((int) Math.ceil(SAMPLING_RATE/frequency));
         //fills the bounded queue with N zeros to model a guitar string at rest
         while (!bq.isFull()) {
@@ -36,24 +35,14 @@ public class GuitarString{
     public void pluck(){
         Random rand = new Random();
         for (int i=0; i<bq.size(); i++) { 
+            //dequeue original value
             bq.dequeue();
+            //get new random value within given range
             double randomVal = rand.nextDouble()-SAMPLE_RANGE;
             //System.out.println(i + " " + randomVal);
+            //enqueue new random value
             bq.enqueue(randomVal);
         }
-        /*
-        Random rand = new Random();
-        // clearing the entire queue 
-        while(!bq.isEmpty()) {
-            bq.dequeue();
-        }
-        // get random variable within given range
-        double randomVal = rand.nextDouble()-SAMPLE_RANGE;
-        // enqueue the random variable
-        while(!bq.isFull()) {
-            bq.enqueue(randomVal);
-        }
-        */
     }
 
     /**
@@ -69,18 +58,13 @@ public class GuitarString{
      * into account its characteristic of sound decay
      */
     public void tic(){
-        //for (int i=0; i<bq.size(); i++) { 
-        //double firstSample = sample();
-        //System.out.println("the original first sample is" + firstSample);
-        //bq.dequeue();
-        //System.out.println("the new first sample is" + sample());
-        //System.out.println("the avg is " + ((firstSample+sample())*DECAY_FACTOR)/2);
+        //store original first sample in firstSample, then dequeue it
         double firstSample = bq.dequeue();
-        double second = bq.first();
-        //double average = (DECAY_FACTOR*(firstSample+sample())/2.0);
-        double average = (DECAY_FACTOR*(firstSample+second)/2.0);
+        //get new first sample, and name it secondSample
+        double secondSample = bq.first();
+        //get average of the two multiplied by given decay factor, then enqueue that average
+        double average = (DECAY_FACTOR*(firstSample+secondSample)/2.0);
         bq.enqueue(average);
-        //}
     }
 
     /**
@@ -134,7 +118,6 @@ public class GuitarString{
      * @param args an array string (unused in this case)
      */
     public static void main (String[] args) { 
-        
         System.out.println("-------------Tests on high frequency=5000--------------");
         System.out.println("------------------------------");
         GuitarString gs = new GuitarString(5000);
@@ -151,8 +134,7 @@ public class GuitarString{
         System.out.println("first sample is: " + gs.sample());
         System.out.println("all samples within -.5 to .5 range is (expect true): " + gs.checkRange());
         System.out.println("------------------------------");
-        
-        
+
         System.out.println("-------------Tests on mid frequency=500--------------");
         System.out.println("------------------------------");
         GuitarString gs2 = new GuitarString(500);
@@ -169,8 +151,7 @@ public class GuitarString{
         System.out.println("first sample is: " + gs2.sample());
         System.out.println("all samples within -.5 to .5 range is (expect true): " + gs2.checkRange());
         System.out.println("------------------------------");
-        
-        
+
         System.out.println("-------------Tests on low frequency=100--------------");
         System.out.println("------------------------------");
         GuitarString gs3 = new GuitarString(100);
@@ -187,6 +168,5 @@ public class GuitarString{
         System.out.println("first sample is: " + gs3.sample());
         System.out.println("all samples within -.5 to .5 range is (expect true): " + gs3.checkRange());
         System.out.println("------------------------------");
-        
     }
 }
