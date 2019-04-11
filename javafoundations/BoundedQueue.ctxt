@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=BoundedQueue
+comment0.text=\n\ BoundedQueue\ implements\ a\ bounded\ queue\ ADT.\ A\ bounded\ queue\ is\ a\ queue\ \n\ with\ a\ maximum\ capacity,\ meaning\ that\ no\ elements\ can\ be\ enqueued\ when\ \n\ the\ queue\ is\ full\ to\ capacity.\n\n\ @author\ Shirley\ Lei,\ Emily\ Yin\n\ @version\ April\ 8th,\ 2019\n
+comment1.params=capacity
+comment1.target=BoundedQueue(int)
+comment1.text=\n\ Constructor\ for\ BoundedQueue\n\ @param\ capacity\ the\ capacity\ of\ the\ bounded\ queue\n
+comment2.params=
+comment2.target=boolean\ isFull()
+comment2.text=\n\ A\ predicate\ that\ indicates\ if\ the\ bounded\ queue\ is\ at\ capacity\ or\ not\n\ @return\ boolean\ true\ if\ bounded\ queue\ is\ at\ capacity,\ false\ otherwise\n
+comment3.params=element
+comment3.target=void\ enqueue(java.lang.Object)
+comment3.text=\n\ Enqueues\ an\ element\ if\ the\ queue\ is\ not\ at\ capacity\n\ @param\ element\ the\ element\ to\ be\ enqueued\n\ @Override\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\n\ Trivial\ (preliminary)\ testing\ for\ BoundedQueue\ methods\n\ @param\ args\ an\ array\ string\ (unused\ in\ this\ case)\n
+numComments=5
